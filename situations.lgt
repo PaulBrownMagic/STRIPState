@@ -10,7 +10,7 @@
 
     :- info([ version is 1.0
             , author is 'Paul Brown'
-            , date is 2019/10/2
+            , date is 2019/10/27
             , comment is 'A fluent is a prototype. It is identified by the relationship that can hold in some situations. The value(s) this relationship holds between in a situation, if any, depend upon the situation'
             ]).
 
@@ -32,7 +32,7 @@
 
     :- info([ version is 1.0
             , author is 'Paul Brown'
-            , date is 2019/10/2
+            , date is 2019/10/27
             , comment is 'An action to be extended by domain actions.'
             ]).
 
@@ -45,7 +45,18 @@
        ]).
 
    :- public(retract_fluents/1).
+   :- mode(retract_fluents(+list), one).
+   :- info(retract_fluents/1,
+       [ comment is 'A list of the fluents this action retracts from the situation.'
+       , argnames is ['Fluents']
+       ]).
+
    :- public(assert_fluents/1).
+   :- mode(assert_fluents(+list), one).
+   :- info(assert_fluents/1,
+       [ comment is 'A list of the fluents this action asserts to the situation.'
+       , argnames is ['Fluents']
+       ]).
 
     :- public(do/2).
     :- mode(do(+list, ?list), zero_or_one).
@@ -68,8 +79,8 @@
 
     :- info([ version is 1.0
             , author is 'Paul Brown'
-            , date is 2019/10/2
-            , comment is 'A situation is defined by its history of actions.'
+            , date is 2019/10/27
+            , comment is 'A situation is defined by the fluents it contains.'
             ]).
 
 
