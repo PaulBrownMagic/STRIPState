@@ -25,9 +25,9 @@ extend the action prototype:
     poss(Situation) :-
         holding(_Item_)::holds(Situation).
 
-    retracts_fluents([holding(_Item_)]).
+    retract_fluents([holding(_Item_)]).
 
-    asserts_fluents([]).
+    assert_fluents([]).
 
 :- end_object.
 ```
@@ -108,6 +108,9 @@ for actions:
 
     poss(S) :-
         situation::holds(power(kettle, on) and not kettle_water(empty), S).
+
+	retract_fluents([temp(water, cold), power(kettle, on)]).
+	assert_fluents([temp(water, hot), power(kettle, off)]).
 
 :- end_object.
 ```
