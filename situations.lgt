@@ -84,6 +84,15 @@
             ]).
 
 
+    :- public(empty/1).
+    :- mode(empty(?term), zero_or_one).
+    :- info(empty/1,
+        [ comment is 'The term that represents the "empty" situation.'
+        , argnames is ['Situation']
+        ]).
+    empty([]).
+
+
    :- public(holds/2).
    :- meta_predicate(holds(*, *)).
    :- mode(holds(?object, +list), zero_or_more).
