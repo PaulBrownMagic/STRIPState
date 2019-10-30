@@ -112,11 +112,11 @@
        % Is a Fluent Case
        fluent::descendant(F),
        F::holds(S).
-   holds_(F, _) :-
+   holds_(F, S) :-
        % Is not a Fluent, treat as term
        nonvar(F),
        \+ fluent::descendant(F),
-       call(F).
+       (list::member(F, S) ; call(F)).
 
    :- public(poss/2).
    :- mode(poss(+object, +list), zero_or_one).
