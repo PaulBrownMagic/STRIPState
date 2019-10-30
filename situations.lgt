@@ -116,7 +116,14 @@
        % Is not a Fluent, treat as term
        nonvar(F),
        \+ fluent::descendant(F),
-       (list::member(F, S) ; call(F)).
+       list::member(F, S).
+   holds_(F, S) :-
+       % Is not a Fluent, treat as term
+       nonvar(F),
+       \+ fluent::descendant(F),
+       \+ list::member(F, S),
+       call(F).
+
 
    :- public(poss/2).
    :- mode(poss(+object, +list), zero_or_one).
