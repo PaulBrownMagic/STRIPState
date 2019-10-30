@@ -113,17 +113,26 @@
        fluent::descendant(F),
        F::holds(S).
    holds_(F, S) :-
-       % Is not a Fluent, treat as term
+       % Maybe it's in the situation list
        nonvar(F),
        \+ fluent::descendant(F),
        list::member(F, S).
+   holds_(Ob::Pred, S) :-
+       % Maybe it's an object fluent
+       is_obj_fluent(Ob::Pred),
+       call(Ob::Pred, S).
    holds_(F, S) :-
        % Is not a Fluent, treat as term
        nonvar(F),
        \+ fluent::descendant(F),
        \+ list::member(F, S),
+       \+ is_obj_fluent(F),
        call(F).
 
+   is_obj_fluent(Ob::Pred) :-
+       functor(Pred, Func, Ar),
+       NAr is Ar + 1,
+       Ob::current_predicate(Func/NAr),
 
    :- public(poss/2).
    :- mode(poss(+object, +list), zero_or_one).
