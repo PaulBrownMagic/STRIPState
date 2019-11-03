@@ -7,6 +7,14 @@ mutation based on STRIPS and situation calculus.
 ![Workflow Status](https://github.com/PaulBrownMagic/STRIPState/workflows/Workflow/badge.svg)
 [Code Coverage Report](https://paulbrownmagic.github.io/STRIPState/coverage_report.html)
 
+## Dependencies
+
+STRIPState depends upon
+[Situations](https://github.com/PaulBrownMagic/Situations). The loader
+assumes it can be accessed as `situations(loader)`.
+
+## Usage
+
 In this library a situation is a list of fluents that hold in that state.
 
 ```logtalk
@@ -88,10 +96,10 @@ What = ball.
 Finally, the situation object has a couple of utility predicates:
 
 ```logtalk
-?- situation::poss(A, []).
+?- stripstate::poss(A, []).
 A = pick_up(ball).
 
-?- situation::holds(holding(pen) and holding(ball), [holding(pen), holding(ball)]).
+?- stripstate::holds(holding(pen) and holding(ball), [holding(pen), holding(ball)]).
 true.
 ```
 
@@ -107,7 +115,7 @@ for actions:
     extends(action)).
 
     poss(S) :-
-        situation::holds(power(kettle, on) and not kettle_water(empty), S).
+        stripstate::holds(power(kettle, on) and not kettle_water(empty), S).
 
 	retract_fluents([temp(water, cold), power(kettle, on)]).
 	assert_fluents([temp(water, hot), power(kettle, off)]).

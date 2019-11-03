@@ -10,7 +10,7 @@
 
     cover(fluent).
     cover(action).
-    cover(situations).
+    cover(stripstate).
 
     s0([door_position(closed), power(light, off)]).
 
@@ -51,22 +51,22 @@
 
     test(plain_holds, true(P == closed)) :-
         s0(S0),
-        situation::holds(door_position(P), S0).
+        stripstate::holds(door_position(P), S0).
     test(query_holds, true([P, V] == [closed, off])) :-
         s0(S0),
-        situation::holds(door_position(P) and power(light, V), S0).
+        stripstate::holds(door_position(P) and power(light, V), S0).
     test(term_holds, true(X = 3)) :-
-        situation::holds(X is 1 + 2, []).
+        stripstate::holds(X is 1 + 2, []).
     test(term_holds_builtin, true(Ls = [a, b, c])) :-
-        findall(X, situation::holds(list::member(X, [a, b, c]), []), Ls).
+        findall(X, stripstate::holds(list::member(X, [a, b, c]), []), Ls).
     test(term_holds_other_object, true) :-
         s0(S0),
-        situation::holds(open_door::poss(S0), []).
+        stripstate::holds(open_door::poss(S0), []).
     test(term_holds_backend, true(C = 97)) :-
-        situation::holds({char_code(a, C)}, []).
+        stripstate::holds({char_code(a, C)}, []).
 
     test(sit_poss, true) :-
         s0(S0),
-        situation::poss(open_door, S0).
+        stripstate::poss(open_door, S0).
 
 :- end_object.
