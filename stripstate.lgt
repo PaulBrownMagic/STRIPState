@@ -34,7 +34,7 @@
         \+ ^^isa(F, fluent),
         \+ list::memberchk(F, S),
         \+ is_obj_fluent(F),
-        call(F).
+        catch(call(F), error(existence_error(procedure, _), _), fail).
 
     is_obj_fluent(Ob::Pred) :-
         current_object(Ob),
