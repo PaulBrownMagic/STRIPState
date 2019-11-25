@@ -33,6 +33,6 @@
         ::poss(S),
         ::retract_fluents(RF),
         ::assert_fluents(AF),
-        meta::exclude({RF}/[F]>>(list::member(F, RF)), S, S2),
-        list::append(AF, S2, S1).
+        findall(F, (list::member(F, S), \+ list::memberchk(F, RF)), S1, AF).
+
 :- end_category.
