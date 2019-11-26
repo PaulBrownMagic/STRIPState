@@ -12,17 +12,17 @@
     empty([]).
 
     do(A, S1, S2) :-
-        conforms_to_protocol(A, action_protocol),
+        ^^is_action(A),
         A::do(S1, S2).
 
     :- meta_predicate(holds_(*, *)).
     holds_(F, S) :-
         % Is a Fluent Case
-        conforms_to_protocol(F, fluent_protocol),
+        ^^is_fluent(F),
         F::holds(S).
     holds_(F, S) :-
         % Maybe it's in the situation list
-        \+ conforms_to_protocol(F, fluent_protocol),
+        \+ ^^is_fluent(F),
         list::member(F, S).
     holds_(Ob::Pred, S) :-
         % Maybe it's an object fluent
@@ -31,7 +31,7 @@
     holds_(F, S) :-
         % Is not a Fluent, treat as term
         nonvar(F),
-        \+ conforms_to_protocol(F, fluent_protocol),
+        \+ ^^is_fluent(F),
         \+ list::memberchk(F, S),
         \+ is_obj_fluent(F),
         catch(call(F), error(existence_error(procedure, _), _), fail).
@@ -51,7 +51,7 @@
         , argnames is ['Action', 'Situation']
         ]).
     poss(A, S) :-
-        conforms_to_protocol(A, action_protocol),
+        ^^is_action(A),
         A::poss(S).
 
 :- end_object.
