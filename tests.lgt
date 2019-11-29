@@ -5,7 +5,7 @@
 		version is 1.2,
 		author is 'Paul Brown',
 		date is 2020/10/28,
-		comment is 'Unit tests for tictactoe.'
+		comment is 'Unit tests for STRIPState.'
 	]).
 
     cover(fluent).

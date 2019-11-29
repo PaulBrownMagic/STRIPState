@@ -30,36 +30,50 @@ false.
 ```
 */
 
+
 :- object(power(_Dev_, _V_), imports(fluent)).
 :- end_object.
+
 
 :- object(door_position(_Pos_), imports(fluent)).
 :- end_object.
 
+
 :- object(turn_on(_Dev_), imports(action)).
+
     poss(S) :-
         power(_Dev_, off)::holds(S).
-    retract_fluents([power(light, off)]).
-    assert_fluents([power(light, on)]).
+
+    retract_assert([power(light, off)], [power(light, on)]).
+
 :- end_object.
+
 
 :- object(turn_off(_Dev_), imports(action)).
+
    poss(S) :-
        power(_Dev_, on)::holds(S).
-    retract_fluents([power(light, on)]).
-    assert_fluents([power(light, off)]).
+
+    retract_assert([power(light, on)], [power(light, off)]).
+
 :- end_object.
+
 
 :- object(open_door, imports(action)).
+
     poss(S) :-
         door_position(closed)::holds(S).
-    retract_fluents([door_position(closed)]).
-    assert_fluents([door_position(open)]).
+
+    retract_assert([door_position(closed)], [door_position(open)]).
+
 :- end_object.
 
+
 :- object(close_door, imports(action)).
+
     poss(S) :-
         door_position(open)::holds(S).
-    retract_fluents([door_position(open)]).
-    assert_fluents([door_position(closed)]).
+
+    retract_assert([door_position(open)], [door_position(closed)]).
+
 :- end_object.
