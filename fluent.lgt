@@ -1,9 +1,9 @@
 :- category(fluent,
     implements(fluent_protocol)).
 
-    :- info([ version is 1.2
+    :- info([ version is 1:2:0
             , author is 'Paul Brown'
-            , date is 2019/11/3
+            , date is 2019-11-03
             , comment is 'A fluent predefines holds/1 as a fluent in the situation term.'
             ]).
 

@@ -2,9 +2,9 @@
 	extends(lgtunit)).
 
 	:- info([
-		version is 1.2,
+		version is 1:2:0,
 		author is 'Paul Brown',
-		date is 2020/10/28,
+		date is 2020-01-28,
 		comment is 'Unit tests for STRIPState.'
 	]).
 
