@@ -1,9 +1,9 @@
 :- category(action,
     implements(action_protocol)).
 
-     :- info([ version is 1.3
+     :- info([ version is 1:3:0
              , author is 'Paul Brown'
-             , date is 2019/11/3
+             , date is 2019-11-03
              , comment is 'An action for STRIPSstate.'
              ]).
 
