@@ -31,4 +31,4 @@ jobs:
           echo ":- multifile(logtalk_library_path/2)." > settings.lgt
           echo ":- dynamic(logtalk_library_path/2)." >> settings.lgt
           echo "logtalk_library_path(situations, '/home/runner/work/STRIPState/Situations/')." >> settings.lgt
-          logtalk_tester
+          logtalk_tester -p swi
